@@ -1,0 +1,17 @@
+.users-horizontal-list {
+}
+
+.user-item-info {
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+
+}
+.user-item-info img{
+    border-radius: 100px;
+    width: 50px;
+}
+.user-item-info .user-name{
+    font-size: 14px;
+    font-weight: 500;
+}

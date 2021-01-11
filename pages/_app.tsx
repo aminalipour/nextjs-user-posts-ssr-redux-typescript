@@ -1,10 +1,19 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React, {FC} from 'react';
-import {AppProps} from 'next/app';
+import React from 'react';
+import App, {AppInitialProps, AppContext} from 'next/app';
 import {wrapper} from '../store';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'react-multi-carousel/lib/styles.css';
 
-const WrappedApp: FC<AppProps> = ({Component, pageProps}) => (
-    <Component {...pageProps} />
-);
+class MyApp extends App<AppInitialProps> {
 
-export default wrapper.withRedux(WrappedApp);
+
+    public render() {
+        const {Component, pageProps} = this.props;
+
+        return (
+            <Component {...pageProps} />
+        );
+    }
+}
+
+export default wrapper.withRedux(MyApp);
