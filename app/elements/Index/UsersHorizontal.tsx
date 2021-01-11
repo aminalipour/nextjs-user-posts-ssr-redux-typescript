@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 import styles from './Users.module.css'
 import Carousel from 'react-multi-carousel';
+import Link from "next/link";
 
 const responsive = {
     superLargeDesktop: {
@@ -31,10 +32,17 @@ const UsersHorizontal = ({users}) => {
             responsive={responsive}>
             {users.map((item, key) => {
                 return (
-                    <div key={key} className={styles['user-item-info']}>
-                        <img className="img-fluid" src={item.picture} alt=""/>
-                        <div className={styles['user-name']}>{item.firstName}</div>
-                    </div>
+                    <Link
+                        href={{
+                            pathname: '/user/info/[userid]',
+                            query: {userid: item.id},
+                        }}
+                    >
+                        <div key={key} className={styles['user-item-info']}>
+                            <img className="img-fluid" src={item.picture} alt=""/>
+                            <div className={styles['user-name']}>{item.firstName}</div>
+                        </div>
+                    </Link>
                 )
             })}
         </Carousel>
