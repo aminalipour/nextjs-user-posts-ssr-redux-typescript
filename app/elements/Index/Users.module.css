@@ -1,17 +1,36 @@
 .users-horizontal-list {
 }
 
-.user-item-info {
-    width: 100px;
+.users-horizontal-list .user-item-info {
+    width: 85px;
     text-align: center;
     padding: 5px;
 
 }
-.user-item-info img{
+.users-horizontal-list .user-item-info img{
     border-radius: 100px;
     width: 50px;
 }
-.user-item-info .user-name{
+.users-horizontal-list .user-item-info .user-name{
     font-size: 14px;
+    font-weight: 500;
+}
+
+.users-vertical-list{
+    margin-top: 10px;
+
+}
+.users-vertical-list .user-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+.users-vertical-list .user-item img {
+    width: 55px;
+    border-radius: 100px;
+    margin-right: 8px;
+
+}
+.users-vertical-list .user-item .name{
     font-weight: 500;
 }

@@ -9,6 +9,7 @@ import UsersHorizontal from "../app/elements/Index/UsersHorizontal";
 const Index = ({user}) => {
     return <Main>
         <UsersHorizontal/>
+        <Users/>
     </Main>
 
 }
