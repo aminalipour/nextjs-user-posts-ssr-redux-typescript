@@ -23,7 +23,7 @@ const Users = ({users,searchKeyword}) => {
                         </div>
                         <div>
                             <div className={styles['name']}>{`${item.firstName} ${item.lastName}`}</div>
-                            <div className="email">
+                            <div className={styles.email}>
                                 {item.email}
                             </div>
                         </div>

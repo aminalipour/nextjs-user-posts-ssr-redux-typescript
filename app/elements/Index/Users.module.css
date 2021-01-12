@@ -7,9 +7,14 @@
     padding: 5px;
 
 }
+.users-horizontal-list .user-item-info:first-child {
+    padding-left: 0;
+
+}
 .users-horizontal-list .user-item-info img{
     border-radius: 100px;
     width: 50px;
+    border: 2px solid #0cc3d9;
 }
 .users-horizontal-list .user-item-info .user-name{
     font-size: 14px;
@@ -26,11 +31,15 @@
     margin: 10px 0px;
 }
 .users-vertical-list .user-item img {
-    width: 55px;
+    width: 50px;
     border-radius: 100px;
     margin-right: 8px;
 
 }
 .users-vertical-list .user-item .name{
     font-weight: 500;
+    font-size: 16px;
+}
+.users-vertical-list .user-item .email{
+    font-size: 14px;
 }
