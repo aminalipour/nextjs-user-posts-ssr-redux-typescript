@@ -1,16 +1,18 @@
 import {
-    SET_USER_INFO,
+    SET_USER_INFO, SET_USER_POSTS,
     SET_USERS
 } from '../actions/types';
-import {User} from "../../app/api/users";
+import {Post, User} from "../../app/api/users";
 
 export interface UserSate {
     users: User[],
-    userInfo: User
+    userInfo: User,
+    posts: Post[]
 }
 export const initialState = {
     users: [],
     userInfo: {},
+    posts: []
 };
 
 export default (state = initialState, action) => {
@@ -20,16 +22,20 @@ export default (state = initialState, action) => {
     } = action;
 
     switch (type) {
-        case SET_USERS: {
+        case SET_USERS:
             return Object.assign({}, state, {
                 users: payload,
             })
-        }
-        case SET_USER_INFO: {
+
+        case SET_USER_INFO:
             return Object.assign({}, state, {
                 userInfo: payload,
             })
-        }
+        case SET_USER_POSTS:
+            return Object.assign({}, state, {
+                posts: payload,
+            })
+
 
         // do nothing
         default: {

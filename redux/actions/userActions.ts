@@ -1,5 +1,5 @@
-import {SET_USER_INFO, SET_USERS, UserActionTypes} from "./types";
-import {getUserInfo, getUsers} from "../../app/api/users";
+import {SET_USER_INFO, SET_USER_POSTS, SET_USERS, UserActionTypes} from "./types";
+import {getUserInfo, getUserPosts, getUsers} from "../../app/api/users";
 
 export const fetchUsers = () => async (dispatch): Promise<UserActionTypes> => {
     const res = await getUsers();
@@ -10,9 +10,15 @@ export const fetchUsers = () => async (dispatch): Promise<UserActionTypes> => {
 }
 export const setUserInfo = (userid) => async (dispatch): Promise<UserActionTypes> => {
     const res = await getUserInfo(userid);
-    console.log(res)
     return  dispatch({
         type: SET_USER_INFO,
+        payload: res
+    })
+}
+export const setUserPosts = (userid) => async (dispatch): Promise<UserActionTypes> => {
+    const res = await getUserPosts(userid);
+    return  dispatch({
+        type: SET_USER_POSTS,
         payload: res
     })
 }

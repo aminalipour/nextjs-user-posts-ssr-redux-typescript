@@ -1,0 +1,26 @@
+.post{
+    margin: 5px 0 ;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #cbc9c9;
+    margin-bottom: 5px;
+}
+.user-info img{
+    width: 45px;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+.post-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date{
+    color: #9b9999;
+}

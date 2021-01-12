@@ -7,7 +7,17 @@ export interface User {
     gender: string,
     registerDate: string,
     location: Location,
+}
 
+export interface Post {
+    id: string
+    text: string,
+    image: string,
+    likes: string,
+    link: string,
+    tags: string[],
+    publishDate: string,
+    owner: User
 }
 
 export interface Location {
@@ -22,11 +32,12 @@ interface UsersResponse {
     data: User[]
 }
 
+const headers: HeadersInit = {
+    'app-id': '5ffb9d685d8b42683019f0ae',
+};
+
 export async function getUsers(): Promise<User[]> {
     const url = 'https://dummyapi.io/data/api/user?limit=10';
-    const headers: HeadersInit = {
-        'app-id': '5ffb9d685d8b42683019f0ae',
-    };
     const opts: RequestInit = {
         method: 'GET',
         headers,
@@ -41,9 +52,6 @@ export async function getUsers(): Promise<User[]> {
 export async function getUserInfo(userid): Promise<User> {
     const url = `https://dummyapi.io/data/api/user/${userid}`;
     console.log(url)
-    const headers: HeadersInit = {
-        'app-id': '5ffb9d685d8b42683019f0ae',
-    };
     const opts: RequestInit = {
         method: 'GET',
         headers,
@@ -52,4 +60,16 @@ export async function getUserInfo(userid): Promise<User> {
     const user: User = await res.json()
     return user
 
+}
+
+export async function getUserPosts(userId): Promise<Post[]> {
+    const url = `https://dummyapi.io/data/api/user/${userId}/post?limit=10`;
+    const opts: RequestInit = {
+        method: 'GET',
+        headers,
+    };
+    const res = await fetch(url, opts)
+    const response = await res.json()
+    const posts: Post[] = response.data
+    return posts
 }
