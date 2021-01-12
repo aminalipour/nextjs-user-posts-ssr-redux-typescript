@@ -4,13 +4,18 @@ import {wrapper} from '../../../store'
 import Main from "../../../app/layouts/Main";
 import {setUserPosts} from "../../../redux/actions/userActions";
 import Post from "../../../app/elements/Post/Post";
+import {setMainPage,setMainTitle} from "../../../redux/actions/mainActions";
+import {useEffect} from "react";
 
-const UserPosts = ({posts}) => {
-
+const UserPosts = (props) => {
+    useEffect(() => {
+        props.setMainPage(false)
+        props.setMainTitle('User Posts')
+    });
     return <Main>
         <br/>
         <div className="row">
-            {posts.map((post, key) => {
+            {props.posts.map((post, key) => {
                 return <div key={key} className="col-md-4 col-sm-6 ">
                     <Post {...post} />
                 </div>
@@ -34,6 +39,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
 const mapDispatchToProps = (dispatch) => {
     return {
         setUserPosts: bindActionCreators(setUserPosts, dispatch),
+        setMainPage: bindActionCreators(setMainPage, dispatch),
+        setMainTitle: bindActionCreators(setMainTitle, dispatch),
     }
 }
 const mapStateToProps = state => ({

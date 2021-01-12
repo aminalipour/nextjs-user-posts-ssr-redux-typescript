@@ -5,8 +5,14 @@ import {fetchUsers} from "../redux/actions/userActions";
 import Main from "../app/layouts/Main";
 import Users from "../app/elements/Index/Users";
 import UsersHorizontal from "../app/elements/Index/UsersHorizontal";
+import {useEffect} from "react";
+import {setMainPage, setMainTitle} from "../redux/actions/mainActions";
 
-const Index = ({user}) => {
+const Index = (props) => {
+    useEffect(() => {
+        props.setMainPage(false)
+        props.setMainTitle('All Users')
+    });
     return <Main>
         <UsersHorizontal/>
         <Users/>
@@ -26,7 +32,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        testAction: bindActionCreators(fetchUsers, dispatch),
+        setMainPage: bindActionCreators(setMainPage, dispatch),
+        setMainTitle: bindActionCreators(setMainTitle, dispatch),
     }
 }
 export default connect(null, mapDispatchToProps)(Index)

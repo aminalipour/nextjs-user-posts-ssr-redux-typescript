@@ -3,8 +3,16 @@ import {bindActionCreators} from 'redux'
 import {wrapper} from '../../../store'
 import Main from "../../../app/layouts/Main";
 import {setUserInfo} from "../../../redux/actions/userActions";
+import {setMainPage, setMainTitle} from "../../../redux/actions/mainActions";
+import {useEffect} from "react";
+import {User} from "../../../app/api/users";
 
-const UserInfo = ({userInfo}) => {
+const UserInfo = (props) => {
+    useEffect(() => {
+        props.setMainPage(false)
+        props.setMainTitle('User Info')
+    });
+    const userInfo : User = props.userInfo
     return <Main>
         <div className="row">
             <div className="col-md-4 ">
@@ -16,7 +24,7 @@ const UserInfo = ({userInfo}) => {
                         </div>
                         <div>
                             <div>Email: <b>{userInfo.email}</b></div>
-                            <div>Gender: <b>{userInfo.gneder}</b></div>
+                            <div>Gender: <b>{userInfo.gender}</b></div>
                             <div>Register Date: <b>{userInfo.registerDate}</b></div>
                         </div>
                         <br/>
@@ -50,7 +58,8 @@ export const getServerSideProps = wrapper.getServerSideProps(
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserInfo: bindActionCreators(setUserInfo, dispatch),
+        setMainPage: bindActionCreators(setMainPage, dispatch),
+        setMainTitle: bindActionCreators(setMainTitle, dispatch),
     }
 }
 const mapStateToProps = state => ({
