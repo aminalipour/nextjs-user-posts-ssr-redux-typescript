@@ -22,7 +22,12 @@ const responsive = {
         items: -1
     }
 };
-const UsersHorizontal = ({users}) => {
+const UsersHorizontal = ({users,searchKeyword}) => {
+    if (searchKeyword)
+        users = users.filter(item=>{
+            return item.firstName.search(searchKeyword) != -1 ||
+                item.lastName.search(searchKeyword) != -1
+        })
     return <div className={styles['users-horizontal-list']}>
         <Carousel
             showDots={false}
@@ -51,7 +56,9 @@ const UsersHorizontal = ({users}) => {
 };
 
 const mapStateToProps = state => ({
-    users: state.user.users
+    users: state.user.users,
+    searchKeyword: state.main.searchKeyword,
+
 });
 
 export default connect(mapStateToProps, {})(UsersHorizontal)

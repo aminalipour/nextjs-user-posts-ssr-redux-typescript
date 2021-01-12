@@ -10,7 +10,7 @@ import {setMainPage, setMainTitle} from "../redux/actions/mainActions";
 
 const Index = (props) => {
     useEffect(() => {
-        props.setMainPage(false)
+        props.setMainPage(true)
         props.setMainTitle('All Users')
     });
     return <Main>
